@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import ExpenseItem from "./ExpenseItem";
 import "./Expense.css"
 import Card from "../UI/Card"
 import ExpensesFilter from "./ExpensesFilter";
+import ExpenseList from './ExpenseList';
 
 function Expense(props)
 {
@@ -22,14 +22,7 @@ function Expense(props)
         <div>
             <Card className="expenses">
                 <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
-                    {filteredExpenses.length === 0 && <p>No expense found.</p>}
-                    {filteredExpenses.length>0 && filteredExpenses.map((expense) => {
-                    return <ExpenseItem 
-                    key = {expense.id}
-                    title={expense.title} 
-                    amount={expense.amount} 
-                    date={expense.date} />
-                    })}
+                <ExpenseList items={filteredExpenses} />
             </Card>
         </div>
         
